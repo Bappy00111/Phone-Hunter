@@ -1,15 +1,24 @@
-const loadPhones = async(suschFiled) =>{
+const loadPhones = async(suschFiled,dataLimet) =>{
     const url = `https://openapi.programming-hero.com/api/phones?search=${suschFiled}`;
     const res = await fetch(url)
     const data = await res.json()
-    showPhones(data.data.slice(0,21))
+    showPhones(data.data,dataLimet)
    
 }
 
-const showPhones = (phones) =>{
+const showPhones = (phones, dataLimet) =>{
     const phoneContainer = document.getElementById('phone-container')
     phoneContainer.innerText = " ";
     // display 20 phone only 
+    const showAll = document.getElementById('show-all');
+    if(dataLimet && phones.length > 10){
+        phones = phones.slice(0,10)
+        showAll.classList.remove('d-none')
+    }
+    else{
+        showAll.classList.add('d-none')
+    }
+
     // phones = phones.slice(0,3)
     
     // display no Phone found 
@@ -47,13 +56,17 @@ const showPhones = (phones) =>{
     toggleSpinner(false)
 }
 
+const procesSusch = (dataLimet) =>{
+    toggleSpinner(true)
+    const suschFiled = document.getElementById('susch-filed').value;
+    loadPhones(suschFiled,dataLimet)
+}
+
 
 //  handle Susch button click 
 const buttonSusch = () =>{
     // start loader 
-    toggleSpinner(true)
-    const suschFiled = document.getElementById('susch-filed').value;
-    loadPhones(suschFiled)
+   procesSusch(10)
     
 
 }
@@ -69,7 +82,12 @@ const toggleSpinner = isLoging =>{
     }
 }
 
+// not the best way show all 
 
+const buttonShowAll = () =>{
+    procesSusch();
+
+}
 
 
 // loadPhones();
