@@ -36,7 +36,7 @@ const showPhones = (phones, dataLimet) =>{
 
     // display all phone 
     phones.forEach(phone => {
-        console.log(phone)
+        // console.log(phone)
         const div = document.createElement('div')
         div.classList.add('col')
         div.innerHTML = `
@@ -45,7 +45,7 @@ const showPhones = (phones, dataLimet) =>{
         <div class="card-body">
           <h5 class="card-title">${phone.phone_name}</h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <button onClick="loadPhoneDetels('${phone.slug}')" type="button" class="btn btn-primary">Show Details</button>
+          <button onClick="loadPhoneDetels('${phone.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetel">Show Details</button>
         </div>
       </div>
         `;
@@ -111,9 +111,19 @@ const loadPhoneDetels = async (id) =>{
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     const res = await fetch(url)
     const data = await res.json()
-    console.log(data.data)
+    displayPhoneDetel(data.data)
 
 }
 
+const displayPhoneDetel = (phone) =>{
+    console.log(phone)
+    const modalTitle = document.getElementById('phoneDetelLabel');
+    modalTitle.innerText = phone.name;
+    const modalPhoto = document.getElementById('dynamicPhoto');
+    modalPhoto.src = phone.image;
+    const phoneReleaseDate = document.getElementById('releaseDate');
+    phoneReleaseDate.innerText = phone.releaseDate ? phone.releaseDate : 'No relaceDate';
+}
 
-// loadPhones();
+
+loadPhones('i');

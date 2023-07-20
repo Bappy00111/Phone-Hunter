@@ -1,47 +1,80 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phone-Hunter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  </head>
-  <body>
-    <!-- header  -->
-   <header>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phone-Hunter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- header  -->
+  <header>
     <h1 class="text-center">Wellcome to Phone Hunter</h1>
-   </header>
-   <!-- main  -->
-   <main class="container">
+  </header>
+  <!-- main  -->
+  <main class="container">
     <!-- display phone  -->
     <div class="mb-3">
-       
-        <input type="email" class="form-control w-50" id="susch-filed" placeholder="Susch your phone">
-        <button onclick="buttonSusch()" type="button" class="btn btn-primary mt-2">click</button>
-      </div>
+
+      <input type="email" class="form-control w-50" id="susch-filed" placeholder="Susch your phone">
+      <button onclick="buttonSusch()" type="button" class="btn btn-primary mt-2">click</button>
+    </div>
     <section>
-        <div id="phone-container"  class="row row-cols-1 row-cols-md-3  g-4">
-           
-          </div>
-         <div id="no-phone-message" class="mt-3 d-none">
-            <h3 class="text-warning">No Phone Found.Please try a New Susch</h3>
-         </div>
-         <!-- show all phones  -->
-         <div id="show-all" class="text-center mt-5 d-none">
-          <div onclick="buttonShowAll()" class="btn btn-primary">Show All</div>
-         </div>
+      <div id="phone-container" class="row row-cols-1 row-cols-md-3  g-4">
+
+      </div>
+      <div id="no-phone-message" class="mt-3 d-none">
+        <h3 class="text-warning">No Phone Found.Please try a New Susch</h3>
+      </div>
+      <!-- show all phones  -->
+      <div id="show-all" class="text-center mt-5 d-none">
+        <div onclick="buttonShowAll()" class="btn btn-primary">Show All</div>
+      </div>
     </section>
     <!-- lodder  -->
     <section id="loader" class="d-none">
-        <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
-          <div class="spinner-border text-success" role="status">
-            <span class="visually-hidden">Loading...</span>
+      <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </section>
+    <!-- modal contence  -->
+    <section>
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="phoneDetel" tabindex="-1" aria-labelledby="phoneDetelLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="phoneDetelLabel"></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img id="dynamicPhoto" class="rounded mx-auto d-block" src="" alt="Dynamic Photo">
+            </div>
+            <div>
+              <p class="text-center" id="releaseDate"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
+      </div>
     </section>
-   </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <!-- javascript  -->
-    <script src="/js/index.js"></script>
-  </body>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <!-- javascript  -->
+  <script src="/js/index.js"></script>
+</body>
+
 </html>
