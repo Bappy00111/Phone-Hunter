@@ -45,6 +45,7 @@ const showPhones = (phones, dataLimet) =>{
         <div class="card-body">
           <h5 class="card-title">${phone.phone_name}</h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <button onClick="loadPhoneDetels('${phone.slug}')" type="button" class="btn btn-primary">Show Details</button>
         </div>
       </div>
         `;
@@ -60,16 +61,31 @@ const procesSusch = (dataLimet) =>{
     toggleSpinner(true)
     const suschFiled = document.getElementById('susch-filed').value;
     loadPhones(suschFiled,dataLimet)
+    
 }
 
+// cleaar the inpute fild value 
 
-//  handle Susch button click 
+
+
+//  handle Susch button click adn clear the inpute filed value
 const buttonSusch = () =>{
     // start loader 
    procesSusch(10)
+   document.getElementById('susch-filed').value = "";
     
 
 }
+
+// search inpute  filed key inter handler and clear the inpute filed value
+
+document.getElementById('susch-filed').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        procesSusch(10)
+        document.getElementById('susch-filed').value = "";
+    }
+});
+
 
 // toggle spinner 
 const toggleSpinner = isLoging =>{
@@ -86,6 +102,16 @@ const toggleSpinner = isLoging =>{
 
 const buttonShowAll = () =>{
     procesSusch();
+
+}
+
+
+// loadPhone Detels 
+const loadPhoneDetels = async (id) =>{
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`
+    const res = await fetch(url)
+    const data = await res.json()
+    console.log(data.data)
 
 }
 
